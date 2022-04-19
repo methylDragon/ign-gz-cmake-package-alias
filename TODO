@@ -1,0 +1,20 @@
+1. Port ign-cmake to gz-cmake (ok maybe not)
+2. IgnConfigureBuild won't matter, instead, target: ign_configure_project, ign_create_packages
+3. Specifically...
+  - IgnConfigureProject.cmake (ign_configure_project)
+  - IgnPackaging.cmake (_ign_create_cmake_package) (basically call it twice, toggling between GZ and IGN project names)
+  
+  
+
+- Add warning in ign_find_package (unfortunately, normal find_package can't be altered..)
+- find_package, or ign_find_package, or both???? If it's just ign_find_package, ticktocking is trivial, we can just do a string replace
+  - Otherwise... We need to generate two sets of config.cmake files for the aliased project...
+- CPack?!?!??! Debian namespacing, I have no clue at that point
+
+Also:
+- find_package() can be used optionally to find and resolve packages
+  - So, for spoofing ign_find_package:
+    1. If the package starts with ign, throw a warning to user
+    2. Replace ign/ignition with gz and try to find the package with gz
+    3. If not found, go back to ign/ignition and find package "normally"
+    
