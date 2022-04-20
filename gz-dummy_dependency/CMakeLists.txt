@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.2 FATAL_ERROR)
-project(ignition-dummy_dependent1 VERSION 1.0.0)
+project(gz-dummy_dependency1 VERSION 1.0.0)
 
 #============================================================================
 # Find ignition-cmake
@@ -12,13 +12,7 @@ find_package(ignition-cmake3 REQUIRED)
 #============================================================================
 set(c++standard 17)
 ign_configure_project(VERSION_SUFFIX)
-
-#============================================================================
-# Find dependencies
-#============================================================================
-# ign_find_package(wow VERSION 1.0.0 REQUIRED)
-ign_find_package(ignition-dummy_dependency1 VERSION 1.0.0 REQUIRED)
-set(IGN_DUMMY_DEPENDENCY_VER ${ignition-dummy_dependency1_VERSION_MAJOR})
+set(IGN_DUMMY_DEPENDENCY_VER ${gz-dummy_dependency1_VERSION_MAJOR})
 
 #============================================================================
 # Configure the build
